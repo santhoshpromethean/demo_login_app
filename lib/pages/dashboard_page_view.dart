@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../auth.dart';
 import 'login_view.dart';
+import 'qr_page_view.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});
@@ -17,9 +18,9 @@ class _DashboardPageState extends State<DashboardPage> {
         stream: Auth().authStateChanges,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return const SignInPage();
+            return QrPageView();
           } else {
-            return const SignInPage();
+            return SignInPage();
           }
         });
   }

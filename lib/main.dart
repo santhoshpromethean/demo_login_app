@@ -7,7 +7,7 @@ Future<void> main() async {
   await Firebase.initializeApp(
       options: FirebaseOptions(
     apiKey: 'AIzaSyB5hJnoG6LNRjBthUrKAntE0T0BslPo5Xc',
-    appId: '1:610213625650:android:80e538d2866bf1aedfe12b',
+    appId: '1:610213625650:android:5a1946b7550e9c3ddfe12b',
     projectId: 'demologinapp-58753',
     storageBucket: 'demologinapp-58753.firebasestorage.app',
     messagingSenderId: '610213625650',

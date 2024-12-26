@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:login_app_demo/pages/qr_page_view.dart';
 import '../auth.dart';
 
 class SignInPage extends StatefulWidget {
@@ -37,6 +38,12 @@ class _SignInPageState extends State<SignInPage> {
           setState(() {
             _verifyId = verificationId;
           });
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+                content: Text(
+              "Wait for the OTP.",
+            )),
+          );
         },
         onError: (FirebaseAuthException e) {
           setState(() {
@@ -45,11 +52,7 @@ class _SignInPageState extends State<SignInPage> {
         },
         onVerified: (credential) {
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-                content: Text(
-              "Verified.",
-              style: TextStyle(fontFamily: "Nunito"),
-            )),
+            const SnackBar(content: Text("Verified.")),
           );
         },
       );
@@ -67,6 +70,11 @@ class _SignInPageState extends State<SignInPage> {
           verificationId: _verifyId!,
           otp: _otpController.text.trim(),
         );
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => QrPageView()),
+        );
+        printIps();
       }
     } catch (e) {
       setState(() {
@@ -245,7 +253,6 @@ class _SignInPageState extends State<SignInPage> {
                                     fontWeight: FontWeight.bold),
                               ),
                             ))),
-                    TextButton(onPressed: printIps, child: Text("hbsxhx"))
                   ],
                 ),
               ),
@@ -258,7 +265,7 @@ class _SignInPageState extends State<SignInPage> {
               child: Center(
                   child: Container(
                       height: 45,
-                      width: width * .4,
+                      width: 180,
                       decoration: BoxDecoration(
                           color: Color(0xff0766AB),
                           borderRadius: BorderRadius.circular(10)),
